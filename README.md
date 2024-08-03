@@ -165,7 +165,9 @@ and [SentenceTransformers](https://www.sbert.net/).
 
 To download the models to the models folder:
 
+```
 docker run -d --gpus=all -v ./models:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 docker exec -it ollama ollama run llama2
 docker exec -it ollama ollama pull nomic-embed-text
+```
 
