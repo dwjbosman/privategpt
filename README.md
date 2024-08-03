@@ -163,11 +163,20 @@ and [SentenceTransformers](https://www.sbert.net/).
 
 # Docker
 
-To download the models to the models folder:
 
 ```
+docker compose build
+
 docker run -d --gpus=all -v ./models:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+#To download the models to the models folder:
 docker exec -it ollama ollama run llama2
 docker exec -it ollama ollama pull nomic-embed-text
+
+docker compose up
+# inspect the local port for the web interface
+docker ps -a
+# 9557fac4a4f8   private-gpt-private-gpt   "/bin/sh -c 'python …"   12 days ago      Up 36 seconds              0.0.0.0:8001->8080/tcp, :::8001->8080/tcp
+# thus the local port is 8001.
+
 ```
 
