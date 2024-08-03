@@ -1,7 +1,8 @@
 services:
   private-gpt:
     build:
-      dockerfile: Dockerfile.external
+#      context: .
+      dockerfile: Dockerfile.local
     volumes:
       - ./local_data/:/home/worker/app/local_data
     ports:
@@ -10,7 +11,14 @@ services:
       PORT: 8080
       PGPT_PROFILES: docker
       PGPT_MODE: ollama
+    user: "1000:1000"
   ollama:
     image: ollama/ollama:latest
     volumes:
       - ./models:/root/.ollama
+#    user: "1000:1000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

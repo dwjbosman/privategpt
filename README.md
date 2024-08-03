@@ -160,3 +160,12 @@ This project has been strongly influenced and supported by other amazing project
 [LlamaCpp](https://github.com/ggerganov/llama.cpp),
 [Chroma](https://www.trychroma.com/)
 and [SentenceTransformers](https://www.sbert.net/).
+
+# Docker
+
+To download the models to the models folder:
+
+docker run -d --gpus=all -v ./models:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker exec -it ollama ollama run llama2
+docker exec -it ollama ollama pull nomic-embed-text
+
